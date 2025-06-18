@@ -1,0 +1,5 @@
+Libraries:
+
+pandas
+sqlalchemy      # <-toolkit that simplifies the connection between Python and SQL databases
+psycopg2-binary        # <-database adapter for the Python
