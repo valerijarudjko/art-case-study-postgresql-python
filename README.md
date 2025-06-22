@@ -52,8 +52,35 @@ for row in result:
     print(row)
 ```
 ----
+## Optional: Using .env for Security (Recommended):
 
 
+```python
+pip install python-dotenv
+```
+
+
+- Create a .env file:
+```python
+DB_USER=
+DB_PASS=
+DB_NAME=
+DB_HOST=
+DB_PORT=
+```
+- Update Python code:
+```python
+import os
+from dotenv import load_dotenv
+from sqlalchemy import create_engine
+
+load_dotenv()
+
+conn_string = f"postgresql://{os.getenv('DB_USER')}:{os.getenv('DB_PASS')}@{os.getenv('DB_HOST')}:{os.getenv('DB_PORT')}/{os.getenv('DB_NAME')}"
+engine = create_engine(conn_string)
+conn = engine.connect()
+```
+____
 
 
 ## Creating a loop
