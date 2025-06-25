@@ -93,8 +93,16 @@ for file in files:
     print(f" Uploaded: {file}")
 ```
 
+_____
 
+## Case Study in the 'art' Database PostgreSQL
 
+### Problem Statements:
+
+1) List all the paintings which are not displayed on any museums?
+2) Are there museums without any paintings?
+
+---
 
 #### Acknowledgments
 - Data Source: Kaggle’s Famous Art
