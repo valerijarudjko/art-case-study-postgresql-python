@@ -45,3 +45,21 @@ JOIN work w ON p.work_id = w.work_id
 WHERE p.sale_price < 0.5 * p.regular_price;
 
 --(total of 34 paintings)
+
+
+--5. Which canva size costs the most?
+SELECT * FROM canvas_size
+
+SELECT cs.label, MAX(ps.sale_price) AS max_price
+FROM product_size ps
+JOIN canvas_size cs ON ps.size_id = cs.size_id::text
+GROUP BY cs.label
+ORDER BY max_price DESC
+LIMIT 1;
+
+
+-- 6. Which canvas is largest by physical size (width)?
+
+SELECT width, height, label
+FROM canvas_size
+ORDER BY width DESC
