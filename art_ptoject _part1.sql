@@ -63,3 +63,25 @@ LIMIT 1;
 SELECT width, height, label
 FROM canvas_size
 ORDER BY width DESC
+
+
+-- 7. Identify the museums with invalid city information in the given dataset.
+
+SELECT *
+FROM museum
+WHERE city IS NULL
+   OR TRIM(city) = ''
+   OR city ~ '^[0-9]+$';
+
+-- or 
+
+SELECT *
+FROM museum
+WHERE city IS NULL
+    OR TRIM(city) = ''
+    OR city SIMILAR TO '[0-9]+';
+
+--(total of 5 cities)
+
+
+
