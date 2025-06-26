@@ -84,4 +84,22 @@ WHERE city IS NULL
 --(total of 5 cities)
 
 
+-- 8. Museum_Hours table has 1 invalid city information. Identify and remove it. 
+
+SELECT mh.*
+FROM museum_hours mh
+JOIN museum m ON mh.museum_id = m.museum_id
+WHERE m.city IS NULL
+   OR TRIM(m.city) = ''
+   OR city SIMILAR TO '[0-9]+';
+
+DELETE FROM museum_hours
+WHERE museum_id IN (
+    SELECT mh.museum_id
+    FROM museum_hours mh
+    JOIN museum m ON mh.museum_id = m.museum_id
+    WHERE m.city IS NULL
+       OR TRIM(m.city) = ''
+       OR m.city SIMILAR TO '[0-9]+'
+);
 
