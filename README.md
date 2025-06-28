@@ -101,7 +101,14 @@ _____
 
 1) List all the paintings which are not displayed on any museums?
 2) Are there museums without any paintings?
-
+3)  How many paintings have an asking price of more than their regular price?
+4)  Identify the paintings whose asking price is less than 50% of their regular price?
+5)  Which canva size costs the most?
+6)  Which canvas is largest by physical size (width)?
+7)  Identify the museums with invalid city information in the given dataset.
+8)  Museum_Hours table has 1 invalid city information. Identify and remove it.
+9)  Fetch the top 10 most famous painting subjects.
+10)   dentify the museums which are open on both Sunday and Monday. Display museum name & city.
 ---
 
 #### Acknowledgments
