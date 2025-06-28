@@ -103,3 +103,21 @@ WHERE museum_id IN (
        OR m.city SIMILAR TO '[0-9]+'
 );
 
+
+-- 9. Fetch the top 10 most famous painting subjects
+
+SELECT subject, count (*) as total_sub
+FROM subject
+GROUP BY subject 
+ORDER BY total_sub DESC
+LIMIT 10;
+
+
+-- 10. Identify the museums which are open on both Sunday and Monday. Display museum name & city.
+
+SELECT m.name, m.city
+FROM museum m
+JOIN museum_hours mh ON m.museum_id = mh.museum_id
+WHERE mh.day IN ('Sunday', 'Monday')
+GROUP BY m.museum_id, m.name, m.city
+HAVING COUNT(DISTINCT mh.day) = 2;
