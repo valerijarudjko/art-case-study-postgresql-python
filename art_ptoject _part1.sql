@@ -121,3 +121,29 @@ JOIN museum_hours mh ON m.museum_id = mh.museum_id
 WHERE mh.day IN ('Sunday', 'Monday')
 GROUP BY m.museum_id, m.name, m.city
 HAVING COUNT(DISTINCT mh.day) = 2;
+
+
+-- 11. How many museums open every single day.
+
+SELECT * from museum_hours
+SELECT * from museum
+
+
+SELECT COUNT(*) AS open_all_week
+FROM (
+    SELECT museum_id
+    FROM museum_hours
+    GROUP BY museum_id
+    HAVING COUNT(DISTINCT day) = 7
+) AS subquery;
+
+
+
+-- 12. Which is the top 5 most popular museums? (Popularity is defined based on the most no of paintings in a museum).
+
+SELECT m.name, COUNT(w.work_id) AS painting_total
+FROM work w
+JOIN museum m ON w.museum_id = m.museum_id
+GROUP BY m.museum_id, m.name
+ORDER BY painting_total DESC
+LIMIT 5;
