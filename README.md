@@ -108,7 +108,11 @@ _____
 7)  Identify the museums with invalid city information in the given dataset.
 8)  Museum_Hours table has 1 invalid city information. Identify and remove it.
 9)  Fetch the top 10 most famous painting subjects.
-10)   dentify the museums which are open on both Sunday and Monday. Display museum name & city.
+10) Identify the museums which are open on both Sunday and Monday. Display museum name & city.
+11) How many museums open every single day.
+12) Which is the top 5 most popular museums? (Popularity is defined based on the most no of paintings in a museum).
+13) Who are the top 5 most popular artists? (Popularity is defined based on the most no of paintings done by an aartist).
+14) Display the 3 least popular paintings.
 ---
 
 #### Acknowledgments
