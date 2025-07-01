@@ -147,3 +147,19 @@ JOIN museum m ON w.museum_id = m.museum_id
 GROUP BY m.museum_id, m.name
 ORDER BY painting_total DESC
 LIMIT 5;
+
+
+
+
+
+
+-- 15. Which museum is open for the longest during the day?
+SELECT m.name, MAX(
+    EXTRACT(EPOCH FROM (TO_TIMESTAMP(close, 'HH12:MI:PM') - TO_TIMESTAMP(open, 'HH12:MI:PM')))
+) / 3600 AS duration_hours
+FROM museum_hours mh
+JOIN museum m ON mh.museum_id = m.museum_id
+GROUP BY m.name
+ORDER BY duration_hours DESC
+LIMIT 1;
+
