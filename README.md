@@ -113,6 +113,7 @@ _____
 12) Which is the top 5 most popular museums? (Popularity is defined based on the most no of paintings in a museum).
 13) Who are the top 5 most popular artists? (Popularity is defined based on the most no of paintings done by an aartist).
 14) Display the 3 least popular paintings.
+15) Which museum is open for the longest during the day?
 ---
 
 #### Acknowledgments
