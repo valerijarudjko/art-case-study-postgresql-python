@@ -128,7 +128,6 @@ HAVING COUNT(DISTINCT mh.day) = 2;
 SELECT * from museum_hours
 SELECT * from museum
 
-
 SELECT COUNT(*) AS open_all_week
 FROM (
     SELECT museum_id
@@ -136,7 +135,6 @@ FROM (
     GROUP BY museum_id
     HAVING COUNT(DISTINCT day) = 7
 ) AS subquery;
-
 
 
 -- 12. Which is the top 5 most popular museums? (Popularity is defined based on the most no of paintings in a museum).
@@ -149,11 +147,31 @@ ORDER BY painting_total DESC
 LIMIT 5;
 
 
+-- 13. Who are the top 5 most popular artists? (Popularity is defined based on the most no of paintings done by an aartist).
+
+SELECT * FROM artist
+SELECT * FROM work
+
+SELECT a.full_name, COUNT(w.work_id) as artist_painting
+FROM work w
+JOIN artist a ON a.artist_id = w.artist_id
+GROUP BY w.artist_id, a.full_name
+ORDER BY artist_painting DESC
+LIMIT 5;
 
 
+-- 14. Display the 3 leeast popular paintings.
+
+SELECT w.work_id, w.name, COUNT(s.subject) AS subject_total
+FROM work w
+LEFT JOIN subject s ON w.work_id = s.work_id
+GROUP BY w.work_id, w.name
+ORDER BY subject_total ASC
+LIMIT 3;
 
 
 -- 15. Which museum is open for the longest during the day?
+
 SELECT m.name, MAX(
     EXTRACT(EPOCH FROM (TO_TIMESTAMP(close, 'HH12:MI:PM') - TO_TIMESTAMP(open, 'HH12:MI:PM')))
 ) / 3600 AS duration_hours
