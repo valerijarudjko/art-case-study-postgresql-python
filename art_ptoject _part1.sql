@@ -181,3 +181,29 @@ GROUP BY m.name
 ORDER BY duration_hours DESC
 LIMIT 1;
 
+
+-- 16. Which museum has the most No of most popular painting style?
+
+-- (Step 1): The most popular style
+WITH popular_style AS (
+    SELECT style
+    FROM work
+    GROUP BY style
+    ORDER BY COUNT(*) DESC
+    LIMIT 1
+),
+
+-- (Step 2): How many paintings of that style are in each museum
+style_per_museum AS (
+    SELECT museum_id, COUNT(*) AS style_count
+    FROM work
+    WHERE style = (SELECT style FROM popular_style)
+    GROUP BY museum_id
+)
+
+-- (Step 3): The museum with the most such paintings
+SELECT m.name, s.style_count
+FROM style_per_museum s
+JOIN museum m ON s.museum_id = m.museum_id
+ORDER BY s.style_count DESC
+LIMIT 1;
